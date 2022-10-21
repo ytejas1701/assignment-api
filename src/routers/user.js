@@ -33,7 +33,7 @@ router.post('/login',
             
             if(!user) throw new Error("invalid email");
 
-            const isValid = await bcrypt.compare(vody.password, user.password);
+            const isValid = await bcrypt.compare(body.password, user.password);
 
             if(!isValid) throw new Error("invalid login credentials");
 
