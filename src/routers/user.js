@@ -16,7 +16,7 @@ router.post('/signup',
             user.password = await bcrypt.hash(user.password, salt);
             await user.save();
 
-            const token = jwt.sign({_id: user._id.toString()}, prcoess.env.JWT_PASSKEY);
+            const token = jwt.sign({_id: user._id.toString()}, process.env.JWT_PASSKEY);
 
             res.send({token});
 
@@ -37,7 +37,7 @@ router.post('/login',
 
             if(!isValid) throw new Error("invalid login credentials");
 
-            const token = jwt.sign({_id: user._id.toString()}, prcoess.env.JWT_PASSKEY);
+            const token = jwt.sign({_id: user._id.toString()}, process.env.JWT_PASSKEY);
             
             res.send({token});
 
